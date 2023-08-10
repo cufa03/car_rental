@@ -1,9 +1,11 @@
 import { Hero, SearchBar, CustomFilter, CarCard } from '@/components';
 import ShowMore from '@/components/ShowMore';
 import { fuels, yearsOfProduction } from '@/constants';
+import { HomeProps } from '@/types/index';
 import { fetchCars } from '@/utils';
+import ScrollUpButton from '@/components/ScrollUpButton';
 
-export default async function Home({ searchParams }) {
+export default async function Home({ searchParams }: HomeProps) {
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || '',
     year: searchParams.year || 2023,
@@ -15,6 +17,7 @@ export default async function Home({ searchParams }) {
   return (
     <main className='overflow-hidden'>
       <Hero />
+      <ScrollUpButton />
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
         <div className='home__text-container'>
           <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
